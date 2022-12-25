@@ -5,8 +5,8 @@ on:
   #  branches: [ main ]
   #pull_request:
   #  branches: [ main ]
-  schedule:
-     - cron: '*/20 * * * *'
+  #schedule:
+  #   - cron: '*/20 * * * *'
   workflow_dispatch:
 
 
