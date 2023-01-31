@@ -40,10 +40,10 @@ jobs:
       - name: 发布固件
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          name: lede X86
-          tag_name: ${{ env.FILE_DATE }} 
+          name: 群晖jun模式编译
+          tag_name: 群晖jun
           body: |
               自用
           files: images/*
