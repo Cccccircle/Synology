@@ -32,11 +32,10 @@ jobs:
           sudo mv *.ko redpill-linux-v4.4.180+.ko
       - name: 添加驱动
         run: |
-           ls
-           ./ext-manager.sh add https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json
-           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
-           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/master/redpill-dtb/rpext-index.json
-           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-misc/rpext-index.json
+           #./ext-manager.sh add https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json
+           #./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
+           #./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/master/redpill-dtb/rpext-index.json
+           #./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-misc/rpext-index.json
            BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
 
       - name: 发布固件
