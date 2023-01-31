@@ -37,21 +37,16 @@ jobs:
            ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-misc/rpext-index.json
            BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
 
-      - name: '提交更新'
-        id: commit
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git diff --quiet && git diff --staged --quiet || git commit -am 'update'
-          
-          
-      - name: Push Dust
-        uses: ad-m/github-push-action@master
+      - name: 发布固件
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github_token: ${{ secrets.PAT }}
-          branch: main
-          
+          name: lede X86
+          tag_name: ${{ env.FILE_DATE }} 
+          body: |
+              自用
+          files: images/*
           
       - name: delete workflow runs
         uses: Mattraks/delete-workflow-runs@main
