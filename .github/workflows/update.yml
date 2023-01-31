@@ -22,7 +22,8 @@ jobs:
       
       - name: 编译初始化
         run: |
-          apt update
+          apt-get update
+          apt-get install curl bspatch jq git
           git clone https://github.com/jumkey/redpill-load.git
           mv redpill-load/* ./ && rm -rf redpill-load
           cd ext/rp-lkm
