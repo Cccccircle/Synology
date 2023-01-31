@@ -19,21 +19,24 @@ jobs:
       - name: Checkout codes
         uses: actions/checkout@v2
         
-      - name: Update system and install zsh
+      
+      - name: 编译初始化
         run: |
-          sudo -E apt-get -qq update
-          sudo -E apt-get install zsh -y
-          
-      - name: 初始化Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-          
-      - name: 开始
+          apt update
+          git clone https://github.com/jumkey/redpill-load.git
+          mv redpill-load/* ./ && rm -rf redpill-load
+          cd ext/rp-lkm
+          wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus.tgz
+          tar -xzf redpill-4.4.180plus.tgz
+          mv *.ko redpill-linux-v4.4.180+.ko
+      - name: 添加驱动
         run: |
-          pip3 install requests
-          python3 webs.py
-          
+           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
+           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
+           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/master/redpill-dtb/rpext-index.json
+           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-misc/rpext-index.json
+           BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
+
       - name: '提交更新'
         id: commit
         run: |
