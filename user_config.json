@@ -5,5 +5,8 @@
   "sn": "2030SBRP5JPCQ",                                                                       
   "mac1": "001132D28322",
   "netif_num": "1"                                                                  
-  }                                                                                            
+ },
+ "synoinfo": {
+    "maxlanport": "4"
+ }                                                                                            
 }
