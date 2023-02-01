@@ -35,6 +35,9 @@ jobs:
           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json
+      
+      - name: 编译镜像
+        run: |
           sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
           mv images/* Jun's Mod-ds918p_7.0.1-42218+virtio.img
            
@@ -43,10 +46,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          name: 群晖jun模式编译
-          tag_name: 群晖jun
+          name: 群晖引导Yet Another Jun's Mod
+          tag_name: v1
           body: |
-              云编译群晖引导
+              云编译镜像
           files: images/*
           
       - name: delete workflow runs
