@@ -35,7 +35,6 @@ jobs:
         run: |
           sudo ./ext-manager.sh add https://raw.githubusercontent.com/pocopico/rp-ext/master/igb/rpext-index.json
           sudo ./ext-manager.sh add https://raw.githubusercontent.com/pocopico/rp-ext/master/igbvf/rpext-index.json
-          sudo ./ext-manager.sh add https://raw.githubusercontent.com/pocopico/rp-ext/master/iavf/rpext-index.json
           sudo ./ext-manager.sh add https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json
           sudo ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
           sudo ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json
