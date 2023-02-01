@@ -40,7 +40,7 @@ jobs:
       - name: 编译镜像
         run: |
           sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
-          # sudo mv images/* Jun's Mod-ds918p_7.0.1-42218+virtio.img
+          sudo mv images/* images/Jun's Mod-ds918p_7.0.1-42218+virtio.img
            
       - name: 发布固件
         uses: softprops/action-gh-release@v1
