@@ -43,7 +43,7 @@ jobs:
       
       - name: 整理镜像
         run: |
-          sudo mv ./images/* ./images/Jun's Mod-ds918p_7.0.1-42218+virtio.img
+          sudo mv ./images/* ./images/"Jun's Mod-ds918p_7.0.1-42218+virtio.img"
            
       - name: 发布固件
         uses: softprops/action-gh-release@v1
