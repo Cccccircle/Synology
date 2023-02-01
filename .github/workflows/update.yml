@@ -32,6 +32,8 @@ jobs:
           sudo mv *.ko redpill-linux-v4.4.180+.ko
       - name: 添加驱动
         run: |
+           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
+           ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
            sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
 
       - name: 发布固件
@@ -42,7 +44,7 @@ jobs:
           name: 群晖jun模式编译
           tag_name: 群晖jun
           body: |
-              自用
+              云编译群晖引导
           files: images/*
           
       - name: delete workflow runs
