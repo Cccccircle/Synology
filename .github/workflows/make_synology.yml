@@ -28,7 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           name: 群晖引导
-          tag_name: v2
+          tag_name: test
           body: 测试固件
           files: user_config.json
 
