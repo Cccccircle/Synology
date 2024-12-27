@@ -19,44 +19,16 @@ jobs:
       - name: Checkout codes
         uses: actions/checkout@v3
         
-      
-      - name: 编译初始化
-        run: |
-          sudo apt-get update
-          sudo apt-get install curl bspatch jq git
-          git clone https://github.com/jumkey/redpill-load.git
-          sudo mv redpill-load/* ./ && sudo rm -rf redpill-load
-          cd ext/rp-lkm
-          wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus.tgz
-          tar -xzf redpill-4.4.180plus.tgz
-          sudo mv *.ko redpill-linux-v4.4.180+.ko
-      
-      - name: 添加驱动
-        run: |
-          sudo ./ext-manager.sh add https://raw.githubusercontent.com/pocopico/rp-ext/master/igb/rpext-index.json
-          sudo ./ext-manager.sh add https://raw.githubusercontent.com/pocopico/rp-ext/master/igbvf/rpext-index.json
-          sudo ./ext-manager.sh add https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json
-          sudo ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json
-          sudo ./ext-manager.sh add https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json
-      
-      - name: 编译镜像
-        run: |
-          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS918+' '7.0.1-42218'
-      
-      - name: 整理镜像
-        run: |
-          sudo mv ./images/* ./images/"YAJM_ds918p-7.0.1-42218.img"
+    
            
       - name: 发布固件
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           name: 群晖引导Yet Another Jun's Mod
-          tag_name: v1
-          body: |
-              云编译镜像
-          files: images/*
+          tag_name: v2
+          body: 测试固件
           
       - name: delete workflow runs
         uses: Mattraks/delete-workflow-runs@main
