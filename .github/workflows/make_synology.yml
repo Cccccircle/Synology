@@ -29,6 +29,8 @@ jobs:
           name: 群晖引导
           tag_name: v2
           body: 测试固件
+          files: user_config.json
+
           
       - name: delete workflow runs
         uses: Mattraks/delete-workflow-runs@main
